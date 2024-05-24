@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HilmiNesia - IP Checker</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script type="text/javascript">
+        function getIPAddress() {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    var ipAddress = data.ip;
+                    document.getElementById('ip-address').innerHTML = ipAddress;
+                });
+        }
+
+        window.onload = getIPAddress;
+    </script>
+</head>
+<body>
+    <div class="container">
+    <div class="card">
+        <h1 class="title">Your IP Address is:</h1>
+        <h2 class="ip-address" id="ip-address"></h2>
+    </div>
+    </div>
+</body>
+</html>
