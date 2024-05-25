@@ -1,4 +1,4 @@
-# Define image
+# Define image alpine
 FROM alpine:latest
 
 # Add nginx package
