@@ -3,11 +3,11 @@ name: Deploy to Production
 on:
   push:
     #branches:
-      #- master  # This triggers the workflow on pushes to the develop branch
+      #- master  # This triggers the workflow on pushes to the master branch
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'
       - '[0-9]+.[0-9]+.[0-9]+rc[0-9]+'
-      # - '*'  # This triggers the workflow on develop tag push
+      # - '*'  # This triggers the workflow on master tag push
       
 jobs:
   determine-base-branch:
