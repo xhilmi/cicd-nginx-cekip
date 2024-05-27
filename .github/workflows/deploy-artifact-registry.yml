@@ -8,6 +8,7 @@ on:
 
 env:
   GCP_PROJECT_NAME: cicd-nginx-cekip
+  # GCP_ARTIFACT_REGISTRY: ${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ env.PROJECT_NAME }}
 
 jobs:
   build-push-artifact:
@@ -15,8 +16,9 @@ jobs:
     steps:
       - name: "Checkout"
         uses: "actions/checkout@v3"
-
-      - id: "auth"
+        
+      - name: "Auth"
+        id: "auth"
           uses: "google-github-actions/auth@v1"
           with:
             credentials_json: "${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}"
