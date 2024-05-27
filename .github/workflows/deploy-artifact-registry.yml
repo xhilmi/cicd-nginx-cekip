@@ -10,7 +10,7 @@ env:
   GCP_PROJECT_NAME: cicd-nginx-cekip
   # GCP_ARTIFACT_REGISTRY: ${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ env.PROJECT_NAME }}
 
-job:
+jobs:
   build-push-artifact:
     runs-on: ubuntu-latest
     steps:
