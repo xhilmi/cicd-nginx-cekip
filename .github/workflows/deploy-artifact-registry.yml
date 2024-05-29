@@ -8,7 +8,7 @@ on:
 
 env:
   GCP_PROJECT_NAME: cicd-nginx-cekip
-  # GCP_ARTIFACT_REGISTRY: ${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ env.PROJECT_NAME }}
+  GCP_ARTIFACT_REGISTRY: ${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ env.PROJECT_NAME }}
 
 jobs:
   build-push-artifact:
