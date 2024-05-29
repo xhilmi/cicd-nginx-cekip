@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GCP_PROJECT_NAME: cicd-nginx-cekip
-      PROJECT_NAME: cicd-nginx-cekip  # Define the project name here
-      GCP_ARTIFACT_REGISTRY: ${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/cicd-nginx-cekip  # Direct reference to the project name
+      PROJECT_NAME: cicd-nginx-cekip
+      GCP_ARTIFACT_REGISTRY: ${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/cicd-nginx-cekip
     steps:
       - name: "Checkout"
         uses: "actions/checkout@v3"
@@ -34,7 +34,7 @@ jobs:
           gcloud auth configure-docker ${{ secrets.GCP_REGION }}-docker.pkg.dev --quiet
 
       - name: Build image
-        run: docker build --file Dockerfile --tag ${{ env.GCP_ARTIFACT_REGISTRY }}
+        run: docker build . --file Dockerfile --tag ${{ env.GCP_ARTIFACT_REGISTRY }}
 
       - name: Push image
         run: docker push ${{ env.GCP_ARTIFACT_REGISTRY }}
