@@ -21,8 +21,8 @@ jobs:
       with:
         # Disabling shallow clone is recommended for improving relevancy of reporting
         fetch-depth: 0
-    - name: SonarQube Scan
-      uses: sonarsource/sonarqube-scan-action@master
+    - name: Official SonarQube Scan
+      uses: SonarSource/sonarqube-scan-action@v2.1.0
       with:
         host: ${{ secrets.SONARQUBE_HOST }} //Sonar Token generated 
         login: ${{ secrets.SONARQUBE_TOKEN }} example URL (https://sq.bswlog.co.in/)
