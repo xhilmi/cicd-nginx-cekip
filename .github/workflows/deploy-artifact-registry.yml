@@ -28,6 +28,8 @@ jobs:
         login: ${{ secrets.SONARQUBE_TOKEN }}
   
   build-push-artifact:
+    name: Build and Push Artifact Registry
+    needs: sonarqube
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"
