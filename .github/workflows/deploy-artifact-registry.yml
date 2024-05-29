@@ -8,9 +8,8 @@ on:
 
 env:
   APP_NAME: "cicd-nginx-cekip"
-  #GCP_ARTIFACT_REGISTRY: "${{ vars.GCP_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${{ vars.GCP_PROJECT_NAME }}"
-  GCP_ARTIFACT_REGISTRY: ${{ secrets.GCP_ARTIFACT_REGISTRY }}
-
+  # GCP_ARTIFACT_REGISTRY: "${{ vars.GCP_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${{ vars.GCP_PROJECT_NAME }}"
+  
 jobs:
   build-push-artifact:
     runs-on: ubuntu-latest
@@ -32,10 +31,10 @@ jobs:
 
       - name: "Docker auth"
         run: |-
-          gcloud auth configure-docker ${{ vars.GCP_REGION }}-docker.pkg.dev --quiet
+          gcloud auth configure-docker ${{ secrets.GCP_REGION }}-docker.pkg.dev --quiet
 
       - name: Build image
-        run: docker build . --file Dockerfile --tag ${{ env.GCP_ARTIFACT_REGISTRY }}/${{ env.APP_NAME }}
+        run: docker build . --file Dockerfile --tag ${{ secrets.GCP_ARTIFACT_REGISTRY }}/${{ env.APP_NAME }}
 
       - name: Push image
-        run: docker push ${{ env.GCP_ARTIFACT_REGISTRY }}/${{ env.APP_NAME }}
+        run: docker push ${{ secrets.GCP_ARTIFACT_REGISTRY }}/${{ env.APP_NAME }}
