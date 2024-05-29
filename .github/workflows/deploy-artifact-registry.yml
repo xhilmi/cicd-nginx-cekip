@@ -17,17 +17,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checking out
-      uses: actions/checkout@master
+      uses: actions/checkout@v2
       with:
         # Disabling shallow clone is recommended for improving relevancy of reporting
         fetch-depth: 0
     - name: SonarQube Scan
-      uses: kitabisa/sonarqube-action@v1.2.0
+      uses: sonarsource/sonarqube-scan-action@master
       with:
-        host: ${{ secrets.SONARQUBE_HOST }}
-        login: ${{ secrets.SONARQUBE_TOKEN }}
+        host: ${{ secrets.SONARQUBE_HOST }} //Sonar Token generated 
+        login: ${{ secrets.SONARQUBE_TOKEN }} example URL (https://sq.bswlog.co.in/)
   
-  build-push-artifact:
+  build-push:
     name: Build and Push Artifact Registry
     needs: sonarqube
     runs-on: ubuntu-latest
