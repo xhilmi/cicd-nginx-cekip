@@ -10,9 +10,8 @@ jobs:
   build-push-artifact:
     runs-on: ubuntu-latest
     env:
-      GCP_PROJECT_NAME: cicd-nginx-cekip
-      PROJECT_NAME: cicd-nginx-cekip
-      GCP_ARTIFACT_REGISTRY: ${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/cicd-nginx-cekip
+      GCP_PROJECT_NAME: xhilmi
+      GCP_ARTIFACT_REGISTRY: ${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_PROJECT_NAME }}
     steps:
       - name: "Checkout"
         uses: "actions/checkout@v3"
